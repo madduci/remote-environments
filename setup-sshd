@@ -30,16 +30,9 @@ set -ex
 #  docker run -e SSH_PUBKEY="public key" image:tag
 
 write_key() {
-  local ID_GROUP
-
-  # As user, group, uid, gid and USERNAME can be overridden at build,
-  # we need to find the values for USERNAME
-  # ID_GROUP contains the user:group of USERNAME directory
-  ID_GROUP=$(stat -c '%U:%G' "${USERNAME}")
-
   mkdir -p "${USERNAME}/.ssh"
   echo "$1" > "${USERNAME}/.ssh/authorized_keys"
-  chown -Rf "${ID_GROUP}" "${USERNAME}/.ssh"
+  chown -Rf "${USERNAME}" "${USERNAME}/.ssh"
   chmod 0700 -R "${USERNAME}/.ssh"
 }
 
