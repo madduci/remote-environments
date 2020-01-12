@@ -1,0 +1,16 @@
+version: "2.4"
+
+services: 
+    go:
+        image: cpp-ssh-env:latest
+        build: 
+            context: .
+        ports: 
+            - "127.0.0.1:22221:22"
+        networks: 
+            - develop
+        volumes: 
+            - ~/.ssh/id_rsa.pub:/tmp/ssh_key.pub
+
+networks:
+    develop:
