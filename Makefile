@@ -1,11 +1,21 @@
-# Use Bash as Shell
-SHELL := /bin/bash
-# Use single shell instance
+# Inspired by https://tech.davis-hansson.com/p/make/
+
+# Use bash
+SHELL := bash
+# Set bash strict mode and enable warnings
 .ONESHELL:
-# Use '>' as indentation character
-.RECIPEPREFIX = >
-# Suppress output of commands
+.SHELLFLAGS := -eu -o pipefail -c
+.DELETE_ON_ERROR:
+MAKEFLAGS += --warn-undefined-variables
+MAKEFLAGS += --no-builtin-rules
+# Making steps silent - don't print all the commands to output
 .SILENT:
+
+# Disable usage of tabs
+ifeq ($(origin .RECIPEPREFIX), undefined)
+  $(error This Make does not support .RECIPEPREFIX. Please use GNU Make 4.0 or later)
+endif
+.RECIPEPREFIX = >
 
 all: cpp go java php python
 > echo "All Docker images built"
