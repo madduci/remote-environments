@@ -2,17 +2,15 @@ version: "3.7"
 
 services: 
   go:
-    image: go-ssh-env:latest
+    image: rust-ssh-env:latest
     build: 
       context: .
     cap_add:
       - SYS_PTRACE
     security_opt:
       - seccomp=unconfined
-    environment: 
-      - GOROOT=/usr/local/go
     ports: 
-      - "127.0.0.1:22222:22"
+      - "127.0.0.1:22226:22"
     networks: 
       - develop
     volumes: 
