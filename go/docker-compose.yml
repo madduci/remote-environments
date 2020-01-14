@@ -1,16 +1,20 @@
-version: "2.4"
+version: "3.7"
 
 services: 
-    go:
-        image: go-ssh-env:latest
-        build: 
-            context: .
-        ports: 
-            - "127.0.0.1:22222:22"
-        networks: 
-            - develop
-        volumes: 
-            - ~/.ssh/id_rsa.pub:/tmp/ssh_key.pub
+  go:
+    image: go-ssh-env:latest
+    build: 
+      context: .
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
+    ports: 
+      - "127.0.0.1:22222:22"
+    networks: 
+      - develop
+    volumes: 
+      - ~/.ssh/id_rsa.pub:/tmp/ssh_key.pub
 
 networks:
-    develop:
+  develop:

@@ -27,11 +27,11 @@ cpp: cpp/.built
 
 cpp-start: cpp
 > docker-compose -f ./cpp/docker-compose.yml up -d
-.PHONY: go-start
+.PHONY: cpp-start
 
 cpp-stop: cpp
 > docker-compose -f ./cpp/docker-compose.yml down
-.PHONY: go-stop
+.PHONY: cpp-stop
 
 go: go/.built
 > echo "Go Docker Image built successfully"
@@ -49,13 +49,49 @@ java: java/.built
 > echo "Java Docker Image built successfully"
 .PHONY: java
 
+java-start: java
+> docker-compose -f ./java/docker-compose.yml up -d
+.PHONY: java-start
+
+java-stop: java
+> docker-compose -f ./java/docker-compose.yml down
+.PHONY: java-stop
+
 php: php/.built
 > echo "PHP Docker Image built successfully"
 .PHONY: php
 
+php-start: php
+> docker-compose -f ./php/docker-compose.yml up -d
+.PHONY: php-start
+
+php-stop: php
+> docker-compose -f ./php/docker-compose.yml down
+.PHONY: php-stop
+
 python: python/.built
 > echo "Python Docker Image built successfully"
 .PHONY: python
+
+python-start: python
+> docker-compose -f ./python/docker-compose.yml up -d
+.PHONY: python-start
+
+python-stop: python
+> docker-compose -f ./python/docker-compose.yml down
+.PHONY: python-stop
+
+rust: rust/.built
+> echo "Rust Docker Image built successfully"
+.PHONY: cpp
+
+rust-start: rust
+> docker-compose -f ./rust/docker-compose.yml up -d
+.PHONY: rust-start
+
+rust-stop: rust
+> docker-compose -f ./rust/docker-compose.yml down
+.PHONY: rust-stop
 
 clean: 
 .PHONY: clean
@@ -96,6 +132,14 @@ python/.built:
 > cp setup-sshd $(@D)/
 > cp .dockerignore $(@D)/
 > docker build --no-cache --tag python-ssh-env:latest -f $(@D)/Dockerfile $(@D)
+> echo $$(date --iso-8601) > $(@D)/.built
+> rm $(@D)/setup-sshd
+> rm $(@D)/.dockerignore
+
+rust/.built: 
+> cp setup-sshd $(@D)/
+> cp .dockerignore $(@D)/
+> docker build --no-cache --tag rust-ssh-env:latest -f $(@D)/Dockerfile $(@D)
 > echo $$(date --iso-8601) > $(@D)/.built
 > rm $(@D)/setup-sshd
 > rm $(@D)/.dockerignore

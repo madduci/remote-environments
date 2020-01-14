@@ -30,10 +30,10 @@ set -ex
 #  docker run -e SSH_PUBKEY="public key" image:tag
 
 write_key() {
-  mkdir -p "${USERNAME}/.ssh"
-  echo "$1" > "${USERNAME}/.ssh/authorized_keys"
-  chown -Rf "${USERNAME}" "${USERNAME}/.ssh"
-  chmod 0700 -R "${USERNAME}/.ssh"
+  mkdir -p "/home/${USERNAME}/.ssh"
+  echo "$1" > "/home/${USERNAME}/.ssh/authorized_keys"
+  chown -Rf "${USERNAME}" "/home/${USERNAME}/.ssh"
+  chmod 0700 -R "/home/${USERNAME}/.ssh"
 }
 
 if [[ ${SSH_PUBKEY} == ssh-* ]]; then
