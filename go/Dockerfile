@@ -24,6 +24,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
     && go get -x -d github.com/stamblerre/gocode 2>&1 \
     && go build -o gocode-gomod github.com/stamblerre/gocode \
     && mv gocode-gomod $GOPATH/bin/ \
+    && echo "### Setting go binary path" \
+    && update-alternatives --install /usr/bin/go go /usr/local/go/bin/go 1 \
     && echo "### Installing Go tools" \
     && go get -u -v \
         github.com/mdempsky/gocode \
@@ -67,7 +69,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
         -e 's/#PasswordAuthentication.*/PasswordAuthentication no/' \
         -e 's/#SyslogFacility.*/SyslogFacility AUTH/' \
         -e 's/#LogLevel.*/LogLevel INFO/' \
-    && mkdir /var/run/sshd
+    && mkdir -p /var/run/sshd
     
 EXPOSE 22
 
