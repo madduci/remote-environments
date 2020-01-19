@@ -32,7 +32,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     && echo "### Cleaning up" \
     && apt-get autoremove -y \
     && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/* /go/src \
+    && rm -rf /var/lib/apt/lists/* \
     && echo "### Configuring sshd daemon" \
     && sed -i /etc/ssh/sshd_config \
         -e 's/#PermitRootLogin.*/PermitRootLogin no/' \

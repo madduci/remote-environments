@@ -1,8 +1,8 @@
 version: "3.7"
 
 services: 
-  go:
-    image: cpp-ssh-env:latest
+  cpp:
+    image: cpp-ssh-env:8.3
     build: 
       context: .
     cap_add:

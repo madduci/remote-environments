@@ -1,8 +1,8 @@
 version: "3.7"
 
 services: 
-  go:
-    image: python-ssh-env:latest
+  python:
+    image: python-ssh-env:3.8
     build: 
       context: .
     cap_add:

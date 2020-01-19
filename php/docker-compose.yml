@@ -1,8 +1,8 @@
 version: "3.7"
 
 services: 
-  go:
-    image: php-ssh-env:latest
+  php:
+    image: php-ssh-env:7.4
     build: 
       context: .
     cap_add:

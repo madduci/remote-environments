@@ -1,8 +1,8 @@
 version: "3.7"
 
 services: 
-  go:
-    image: rust-ssh-env:latest
+  rust:
+    image: rust-ssh-env:1.40
     build: 
       context: .
     cap_add:
