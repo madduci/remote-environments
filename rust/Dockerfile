@@ -19,7 +19,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
       openssh-server \
       dialog 2>&1 \
     && echo "### Installing git, process tools and lsb-release" \
-    && apt-get -y install git iproute2 procps lsb-release \
+    && apt-get -y install git iproute2 procps lsb-release  curl \
     && echo "### Installing lldb" \
     && apt-get install -y lldb python3-minimal libpython3.7 \
     && echo "### Installing Rust components" \

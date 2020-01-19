@@ -19,7 +19,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
         openssh-server \
         dialog 2>&1 \
     && echo "### Installing git, process tools and lsb-release" \
-    && apt-get -y install git iproute2 procps lsb-release \
+    && apt-get -y install git iproute2 procps lsb-release curl \
     && echo "### Installing C++ tools" \
     && apt-get -y install build-essential cmake cppcheck valgrind gdb \
     && echo "### Creating non-root user ${USERNAME}" \

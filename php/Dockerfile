@@ -19,7 +19,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
         openssh-server \
         dialog 2>&1 \
     && echo "### Installing git, process tools and lsb-release" \
-    && apt-get -y install git iproute2 procps lsb-release \
+    && apt-get -y install git iproute2 procps lsb-release curl \
     && echo "### Installing xdebug" \
     && yes | pecl install xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \

@@ -17,7 +17,7 @@ ifeq ($(origin .RECIPEPREFIX), undefined)
 endif
 .RECIPEPREFIX = >
 
-all: cpp go java php python
+all: cpp go java php python rust
 > echo "All Docker images built"
 .PHONY: all
 
@@ -94,12 +94,13 @@ rust-stop: rust
 .PHONY: rust-stop
 
 clean: 
+> find . -name ".built" -type f -exec rm {} \;
 .PHONY: clean
 
 cpp/.built:
 > cp setup-sshd $(@D)/
 > cp .dockerignore $(@D)/
-> docker build --no-cache --tag cpp-ssh-env:latest -f $(@D)/Dockerfile $(@D)
+> docker build --no-cache --tag cpp-ssh-env:8.3 -f $(@D)/Dockerfile $(@D)
 > echo $$(date --iso-8601) > $(@D)/.built
 > rm $(@D)/setup-sshd
 > rm $(@D)/.dockerignore
@@ -107,7 +108,7 @@ cpp/.built:
 go/.built:
 > cp setup-sshd $(@D)/
 > cp .dockerignore $(@D)/
-> docker build --no-cache --tag go-ssh-env:latest -f $(@D)/Dockerfile $(@D)
+> docker build --no-cache --tag go-ssh-env:1.13 -f $(@D)/Dockerfile $(@D)
 > echo $$(date --iso-8601) > $(@D)/.built
 > rm $(@D)/setup-sshd
 > rm $(@D)/.dockerignore
@@ -115,7 +116,7 @@ go/.built:
 java/.built:
 > cp setup-sshd $(@D)/
 > cp .dockerignore $(@D)/
-> docker build --no-cache --tag java-ssh-env:latest -f $(@D)/Dockerfile $(@D)
+> docker build --no-cache --tag java-ssh-env:13 -f $(@D)/Dockerfile $(@D)
 > echo $$(date --iso-8601) > $(@D)/.built
 > rm $(@D)/setup-sshd
 > rm $(@D)/.dockerignore
@@ -123,7 +124,7 @@ java/.built:
 php/.built:
 > cp setup-sshd $(@D)/
 > cp .dockerignore $(@D)/
-> docker build --no-cache --tag php-ssh-env:latest -f $(@D)/Dockerfile $(@D)
+> docker build --no-cache --tag php-ssh-env:7.4 -f $(@D)/Dockerfile $(@D)
 > echo $$(date --iso-8601) > $(@D)/.built
 > rm $(@D)/setup-sshd
 > rm $(@D)/.dockerignore
@@ -131,7 +132,7 @@ php/.built:
 python/.built: 
 > cp setup-sshd $(@D)/
 > cp .dockerignore $(@D)/
-> docker build --no-cache --tag python-ssh-env:latest -f $(@D)/Dockerfile $(@D)
+> docker build --no-cache --tag python-ssh-env:3.8 -f $(@D)/Dockerfile $(@D)
 > echo $$(date --iso-8601) > $(@D)/.built
 > rm $(@D)/setup-sshd
 > rm $(@D)/.dockerignore
@@ -139,7 +140,7 @@ python/.built:
 rust/.built: 
 > cp setup-sshd $(@D)/
 > cp .dockerignore $(@D)/
-> docker build --no-cache --tag rust-ssh-env:latest -f $(@D)/Dockerfile $(@D)
+> docker build --no-cache --tag rust-ssh-env:1.40 -f $(@D)/Dockerfile $(@D)
 > echo $$(date --iso-8601) > $(@D)/.built
 > rm $(@D)/setup-sshd
 > rm $(@D)/.dockerignore
