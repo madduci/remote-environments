@@ -78,13 +78,14 @@ make python-stop
 make rust-stop
 ```
 
-And the environment will be stopped.
+And the environment will be stopped, without losing its content.
+To perform a cleanup, call directly the `docker-compose.yml` file you are interested in or issue the command `make clean` and all the running containers will be stopped.
 
 ## Gotchas
 
-* Every time you rebuild an image and start a desired environment, you have to cleanup your list of authorized keys in your SSH client.
+* Every time you rebuild an image and start a desired environment, you have to cleanup your list of authorized keys in your SSH client (in Linux, usually the file ~/.ssh/known_hosts)
 
-* If you want to save your work, you have two options:
+* If you want to save your work outside the container, you have three options:
   - use the `git` command to save your work to a remote repository (e.g. GitHub, GitLab, BitBucket)
   - use the `docker cp` command to copy files and/or folders on your host
-
+  - modify the `docker-compose.yml` file(s) and mount a custom path as volume in the container. Be sure you have the required permissions to read/write files in the mounted volume.

@@ -30,7 +30,7 @@ cpp-start: cpp
 .PHONY: cpp-start
 
 cpp-stop: cpp
-> docker-compose -f ./cpp/docker-compose.yml down
+> docker-compose -f ./cpp/docker-compose.yml stop
 .PHONY: cpp-stop
 
 go: go/.built
@@ -42,7 +42,7 @@ go-start: go
 .PHONY: go-start
 
 go-stop: go
-> docker-compose -f ./go/docker-compose.yml down
+> docker-compose -f ./go/docker-compose.yml stop
 .PHONY: go-stop
 
 java: java/.built
@@ -54,7 +54,7 @@ java-start: java
 .PHONY: java-start
 
 java-stop: java
-> docker-compose -f ./java/docker-compose.yml down
+> docker-compose -f ./java/docker-compose.yml stop
 .PHONY: java-stop
 
 php: php/.built
@@ -66,7 +66,7 @@ php-start: php
 .PHONY: php-start
 
 php-stop: php
-> docker-compose -f ./php/docker-compose.yml down
+> docker-compose -f ./php/docker-compose.yml stop
 .PHONY: php-stop
 
 python: python/.built
@@ -78,7 +78,7 @@ python-start: python
 .PHONY: python-start
 
 python-stop: python
-> docker-compose -f ./python/docker-compose.yml down
+> docker-compose -f ./python/docker-compose.yml stop
 .PHONY: python-stop
 
 rust: rust/.built
@@ -90,10 +90,11 @@ rust-start: rust
 .PHONY: rust-start
 
 rust-stop: rust
-> docker-compose -f ./rust/docker-compose.yml down
+> docker-compose -f ./rust/docker-compose.yml stop
 .PHONY: rust-stop
 
 clean: 
+> find . -name "docker-compose.yml" -type f -exec docker-compose -f {} stop \;
 > find . -name ".built" -type f -exec rm {} \;
 .PHONY: clean
 
