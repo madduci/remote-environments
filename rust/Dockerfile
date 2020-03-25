@@ -1,4 +1,4 @@
-FROM rust:1.41-buster
+FROM rust:1.42-buster
 
 LABEL maintainer = "Michele Adduci <adduci.michele@gmail.com>" \
     license = "MIT" \

@@ -2,7 +2,7 @@ version: "3.7"
 
 services: 
   java:
-    image: java-ssh-env:13
+    image: java-ssh-env:14
     build: 
       context: .
     cap_add:
