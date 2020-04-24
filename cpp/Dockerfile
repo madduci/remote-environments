@@ -21,7 +21,12 @@ RUN DEBIAN_FRONTEND=noninteractive \
     && echo "### Installing git, process tools and lsb-release" \
     && apt-get -y install git iproute2 procps lsb-release curl \
     && echo "### Installing C++ tools" \
-    && apt-get -y install build-essential cmake cppcheck valgrind gdb \
+    && apt-get -y install \
+      build-essential \
+      cmake \
+      cppcheck \
+      valgrind \
+      gdb \
     && echo "### Creating non-root user ${USERNAME}" \
     && groupadd --gid $USER_GID $USERNAME \
     && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
