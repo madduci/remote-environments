@@ -10,11 +10,11 @@ ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
 ENV USERNAME=${USERNAME} \
-    CONAN_VERSION=1.25.2  \
-    CONAN_TAG=1_25_2 \
+    CONAN_VERSION=1.26.1  \
+    CONAN_TAG=1_26_1 \
     CONAN_REVISIONS_ENABLED=1 \
     CONAN_NON_INTERACTIVE=1 \
-    CMAKE_VERSION=3.17.2
+    CMAKE_VERSION=3.17.3
 
 RUN DEBIAN_FRONTEND=noninteractive \
     && echo "### Configure apt, install openssh-server, dialog and tools" \
