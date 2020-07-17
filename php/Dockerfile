@@ -1,4 +1,4 @@
-FROM php:7.4-cli
+FROM php:7.4-apache
 
 LABEL maintainer = "Michele Adduci <adduci.michele@gmail.com>" \
       license = "MIT" \
@@ -43,7 +43,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
         -e 's/#PasswordAuthentication.*/PasswordAuthentication no/' \
         -e 's/#SyslogFacility.*/SyslogFacility AUTH/' \
         -e 's/#LogLevel.*/LogLevel INFO/' \
-    && mkdir /var/run/sshd
+    && mkdir /var/run/sshd \
+    && chown -R $USERNAME /var/www/html
 
 EXPOSE 22
 
@@ -52,4 +53,4 @@ COPY --chown=${USERNAME}:root setup-sshd /usr/local/bin/setup-sshd
 
 WORKDIR /home/$USERNAME
 
-ENTRYPOINT ["setup-sshd"]
+ CMD [ "setup-sshd" ]
