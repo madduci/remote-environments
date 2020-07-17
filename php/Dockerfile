@@ -20,6 +20,9 @@ RUN DEBIAN_FRONTEND=noninteractive \
         dialog 2>&1 \
     && echo "### Installing git, process tools and lsb-release" \
     && apt-get -y install git iproute2 procps lsb-release curl \
+    && echo "### Installing composer" \
+    && curl -L https://getcomposer.org/composer-stable.phar -o /usr/local/bin/composer \
+    && chmod +x  /usr/local/bin/composer \
     && echo "### Installing xdebug" \
     && yes | pecl install xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
