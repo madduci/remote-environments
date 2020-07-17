@@ -15,7 +15,7 @@ services:
     networks: 
       - develop
     volumes: 
-      - ~/.ssh/id_ed25519.pub:/tmp/ssh_key.pub
+      - ~/.ssh/id_rsa.pub:/tmp/ssh_key.pub
 
 networks:
   develop:
