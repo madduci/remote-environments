@@ -17,7 +17,7 @@ ifeq ($(origin .RECIPEPREFIX), undefined)
 endif
 .RECIPEPREFIX = >
 
-all: cpp go java php python rust
+all: cpp go java javascript php python rust 
 > echo "All Docker images built"
 .PHONY: all
 
@@ -56,6 +56,18 @@ java-start: java
 java-stop: java
 > docker-compose -f ./java/docker-compose.yml stop
 .PHONY: java-stop
+
+javascript: javascript/.built
+> echo "Javascript Docker Image built successfully"
+.PHONY: javascript
+
+javascript-start: javascript
+> docker-compose -f ./javascript/docker-compose.yml up -d
+.PHONY: javascript-start
+
+javascript-stop: javascript
+> docker-compose -f ./javascript/docker-compose.yml stop
+.PHONY: javascript-stop
 
 php: php/.built
 > echo "PHP Docker Image built successfully"
@@ -109,7 +121,7 @@ cpp/.built:
 go/.built:
 > cp setup-sshd $(@D)/
 > cp .dockerignore $(@D)/
-> docker build --no-cache --tag go-ssh-env:1.13 -f $(@D)/Dockerfile $(@D)
+> docker build --no-cache --tag go-ssh-env:1.14 -f $(@D)/Dockerfile $(@D)
 > echo $$(date --iso-8601) > $(@D)/.built
 > rm $(@D)/setup-sshd
 > rm $(@D)/.dockerignore
@@ -117,7 +129,15 @@ go/.built:
 java/.built:
 > cp setup-sshd $(@D)/
 > cp .dockerignore $(@D)/
-> docker build --no-cache --tag java-ssh-env:13 -f $(@D)/Dockerfile $(@D)
+> docker build --no-cache --tag java-ssh-env:14 -f $(@D)/Dockerfile $(@D)
+> echo $$(date --iso-8601) > $(@D)/.built
+> rm $(@D)/setup-sshd
+> rm $(@D)/.dockerignore
+
+javascript/.built:
+> cp setup-sshd $(@D)/
+> cp .dockerignore $(@D)/
+> docker build --no-cache --tag javascript-ssh-env:12 -f $(@D)/Dockerfile $(@D)
 > echo $$(date --iso-8601) > $(@D)/.built
 > rm $(@D)/setup-sshd
 > rm $(@D)/.dockerignore
@@ -141,7 +161,7 @@ python/.built:
 rust/.built: 
 > cp setup-sshd $(@D)/
 > cp .dockerignore $(@D)/
-> docker build --no-cache --tag rust-ssh-env:1.40 -f $(@D)/Dockerfile $(@D)
+> docker build --no-cache --tag rust-ssh-env:1.45 -f $(@D)/Dockerfile $(@D)
 > echo $$(date --iso-8601) > $(@D)/.built
 > rm $(@D)/setup-sshd
 > rm $(@D)/.dockerignore

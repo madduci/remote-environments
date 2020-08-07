@@ -1,8 +1,8 @@
 version: "3.7"
 
 services: 
-  rust:
-    image: rust-ssh-env:1.45
+  javascript:
+    image: javascript-ssh-env:12
     build: 
       context: .
     cap_add:
@@ -10,7 +10,7 @@ services:
     security_opt:
       - seccomp=unconfined
     ports: 
-      - "127.0.0.1:22226:22"
+      - "127.0.0.1:22227:22"
     networks: 
       - develop
     volumes: 

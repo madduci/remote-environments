@@ -20,6 +20,7 @@ There's a `Makefile` available in the repository, you can execute one of the fol
 make cpp
 make go
 make java
+make javascript
 make php
 make python
 make rust
@@ -41,6 +42,7 @@ After that, you can start the environments with the following commands:
 make cpp-start
 make go-start
 make java-start
+make javascript-start
 make php-start
 make python-start
 make rust-start
@@ -59,11 +61,12 @@ The environments expose the following ports:
 | Environment  | Docker Host  | Docker Container  | 
 |--------------|--------------|-------------------|
 | C++          | 22221        | 22  |
-| Go           | 22222        | 22  |
-| Java         | 22223        | 22  |
-| PHP          | 22224        | 22  |
+| Go             | 22222        | 22  |
+| Java           | 22223        | 22  |
+| PHP            | 22224        | 22  |
 | Python       | 22225        | 22  |
-| Rust         | 22226        | 22  |
+| Rust           | 22226        | 22  |
+| Javascript   | 22227        | 22  |
 
 ## How to stop containers
 
@@ -73,6 +76,7 @@ You can stop the containers by typing:
 make cpp-stop
 make go-stop
 make java-stop
+make javascript-stop
 make php-stop
 make python-stop
 make rust-stop
@@ -83,6 +87,8 @@ To perform a cleanup, call directly the `docker-compose.yml` file you are intere
 
 ## Gotchas
 
+* VSCodium, the stripped version of Visual Studio Code **does not work** since it requires closed source components only available in Code
+  
 * Every time you rebuild an image and start a desired environment, you have to cleanup your list of authorized keys in your SSH client (in Linux, usually the file ~/.ssh/known_hosts)
 
 * If you want to save your work outside the container, you have three options:
