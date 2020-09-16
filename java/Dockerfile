@@ -1,4 +1,4 @@
-FROM  openjdk:14-jdk-slim-buster
+FROM  openjdk:15-jdk-slim-buster
 
 LABEL maintainer = "Michele Adduci <adduci.michele@gmail.com>" \
       license = "MIT" \
