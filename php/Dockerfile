@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.0-apache
 
 LABEL maintainer = "Michele Adduci <adduci.michele@gmail.com>" \
       license = "MIT" \

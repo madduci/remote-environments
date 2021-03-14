@@ -61,11 +61,11 @@ The environments expose the following ports:
 | Environment  | Docker Host  | Docker Container  | 
 |--------------|--------------|-------------------|
 | C++          | 22221        | 22  |
-| Go             | 22222        | 22  |
-| Java           | 22223        | 22  |
-| PHP            | 22224        | 22  |
+| Go           | 22222        | 22  |
+| Java         | 22223        | 22  |
+| PHP          | 22224        | 22  |
 | Python       | 22225        | 22  |
-| Rust           | 22226        | 22  |
+| Rust         | 22226        | 22  |
 | Javascript   | 22227        | 22  |
 
 ## How to stop containers
