@@ -2,7 +2,7 @@ version: "3.7"
 
 services: 
   php:
-    image: php-ssh-env:7.4
+    image: php-ssh-env:8.0
     build: 
       context: .
     cap_add:
