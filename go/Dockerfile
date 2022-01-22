@@ -1,6 +1,6 @@
-FROM golang:1.16-buster
+FROM golang:1.17-buster
 
-LABEL maintainer = "Michele Adduci <adduci.michele@gmail.com>" \
+LABEL maintainer = "Michele Adduci <adduci@tutanota.com>" \
       license = "MIT" \
       description = "Development Enviroment for Go accessible with SSH"
 

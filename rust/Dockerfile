@@ -1,6 +1,6 @@
-FROM rust:1.53-buster
+FROM rust:1.58-buster
 
-LABEL maintainer = "Michele Adduci <adduci.michele@gmail.com>" \
+LABEL maintainer = "Michele Adduci <adduci@tutanota.com>" \
     license = "MIT" \
     description = "Development Enviroment for Rust accessible with SSH"
 

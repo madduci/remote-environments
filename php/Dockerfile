@@ -1,6 +1,6 @@
-FROM php:8.0-apache
+FROM php:8.1-apache
 
-LABEL maintainer = "Michele Adduci <adduci.michele@gmail.com>" \
+LABEL maintainer = "Michele Adduci <adduci@tutanota.com>" \
       license = "MIT" \
       description = "Development Enviroment for PHP accessible with SSH"
 

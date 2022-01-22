@@ -1,6 +1,6 @@
-FROM python:3.9-buster
+FROM python:3.10-buster
 
-LABEL maintainer = "Michele Adduci <adduci.michele@gmail.com>" \
+LABEL maintainer = "Michele Adduci <adduci@tutanota.com>" \
       license = "MIT" \
       description = "Development Enviroment for Python accessible with SSH"
 

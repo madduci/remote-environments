@@ -2,7 +2,7 @@ version: "3.7"
 
 services: 
   go:
-    image: go-ssh-env:1.16
+    image: go-ssh-env:1.17
     build: 
       context: .
     cap_add:

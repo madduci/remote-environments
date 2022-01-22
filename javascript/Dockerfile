@@ -1,6 +1,6 @@
 FROM node:lts-buster
 
-LABEL maintainer = "Michele Adduci <adduci.michele@gmail.com>" \
+LABEL maintainer = "Michele Adduci <adduci@tutanota.com>" \
       license = "MIT" \
       description = "Development Enviroment for JavaScript/Node accessible with SSH"
 

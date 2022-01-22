@@ -1,6 +1,6 @@
 FROM debian:buster
 
-LABEL maintainer = "Michele Adduci <adduci.michele@gmail.com>" \
+LABEL maintainer = "Michele Adduci <adduci@tutanota.com>" \
       license = "MIT" \
       description = "Development Enviroment for C++ accessible with SSH"
 
@@ -10,11 +10,11 @@ ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
 ENV USERNAME=${USERNAME} \
-    CONAN_VERSION=1.38.0  \
-    CONAN_TAG=1_38_0 \
+    CONAN_VERSION=1.44.1  \
+    CONAN_TAG=1_44_1 \
     CONAN_REVISIONS_ENABLED=1 \
     CONAN_NON_INTERACTIVE=1 \
-    CMAKE_VERSION=3.21.0
+    CMAKE_VERSION=3.22.1
 
 RUN DEBIAN_FRONTEND=noninteractive \
     && echo "### Configure apt, install openssh-server, dialog and tools" \
