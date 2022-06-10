@@ -1,4 +1,4 @@
-FROM golang:1.17-buster
+FROM golang:1.18-buster
 
 LABEL maintainer = "Michele Adduci <adduci@tutanota.com>" \
       license = "MIT" \
