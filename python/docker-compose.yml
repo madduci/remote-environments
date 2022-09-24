@@ -2,7 +2,7 @@ version: "3.7"
 
 services: 
   python:
-    image: python-ssh-env:3.10
+    image: python-ssh-env:latest
     build: 
       context: .
     cap_add:

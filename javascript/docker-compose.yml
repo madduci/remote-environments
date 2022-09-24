@@ -2,7 +2,7 @@ version: "3.7"
 
 services: 
   javascript:
-    image: javascript-ssh-env:16
+    image: javascript-ssh-env:latest
     build: 
       context: .
     cap_add:

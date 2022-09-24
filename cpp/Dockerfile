@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM ubuntu:22.04
 
 LABEL maintainer = "Michele Adduci <adduci@tutanota.com>" \
       license = "MIT" \
@@ -10,11 +10,10 @@ ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
 ENV USERNAME=${USERNAME} \
-    CONAN_VERSION=1.49.0  \
-    CONAN_TAG=1.49.0 \
+    CONAN_VERSION=1.52.0  \
     CONAN_REVISIONS_ENABLED=1 \
     CONAN_NON_INTERACTIVE=1 \
-    CMAKE_VERSION=3.23.2
+    CMAKE_VERSION=3.24.2
 
 RUN DEBIAN_FRONTEND=noninteractive \
     && echo "### Configure apt, install openssh-server, dialog and tools" \
@@ -32,15 +31,15 @@ RUN DEBIAN_FRONTEND=noninteractive \
         valgrind \
         gdb \
     && echo "### Installing Conan ${CONAN_VERSION}" \
-    && curl -o /tmp/conan.deb -L https://github.com/conan-io/conan/releases/download/${CONAN_VERSION}/conan-ubuntu-64_${CONAN_TAG}.deb \
+    && curl -o /tmp/conan.deb -L https://github.com/conan-io/conan/releases/download/${CONAN_VERSION}/conan-ubuntu-64.deb \
     && dpkg -i /tmp/conan.deb \
     && echo "### Installing CMake ${CMAKE_VERSION}" \
-    && curl -o /tmp/cmake.tar.gz -L https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz \
+    && curl -o /tmp/cmake.tar.gz -L https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-linux-x86_64.tar.gz \
     && tar -xzf /tmp/cmake.tar.gz -C /opt/ \
-    && update-alternatives --install /usr/bin/cmake cmake /opt/cmake-${CMAKE_VERSION}-Linux-x86_64/bin/cmake 1 \
-    && update-alternatives --install /usr/bin/ccmake ccmake /opt/cmake-${CMAKE_VERSION}-Linux-x86_64/bin/ccmake 1 \
-    && update-alternatives --install /usr/bin/cpack cpack /opt/cmake-${CMAKE_VERSION}-Linux-x86_64/bin/cpack 1 \
-    && update-alternatives --install /usr/bin/ctest ctest /opt/cmake-${CMAKE_VERSION}-Linux-x86_64/bin/ctest 1 \
+    && update-alternatives --install /usr/bin/cmake cmake /opt/cmake-${CMAKE_VERSION}-linux-x86_64/bin/cmake 1 \
+    && update-alternatives --install /usr/bin/ccmake ccmake /opt/cmake-${CMAKE_VERSION}-linux-x86_64/bin/ccmake 1 \
+    && update-alternatives --install /usr/bin/cpack cpack /opt/cmake-${CMAKE_VERSION}-linux-x86_64/bin/cpack 1 \
+    && update-alternatives --install /usr/bin/ctest ctest /opt/cmake-${CMAKE_VERSION}-linux-x86_64/bin/ctest 1 \
     && echo "### Creating non-root user ${USERNAME}" \
     && groupadd --gid $USER_GID $USERNAME \
     && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \

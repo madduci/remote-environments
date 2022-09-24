@@ -2,7 +2,7 @@ version: "3.7"
 
 services: 
   cpp:
-    image: cpp-ssh-env:8.3
+    image: cpp-ssh-env:latest
     build: 
       context: .
     cap_add:
