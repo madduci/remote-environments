@@ -1,4 +1,4 @@
-FROM  openjdk:21-jdk-slim-buster
+FROM  eclipse-temurin:21-jdk-jammy
 
 LABEL maintainer = "Michele Adduci <adduci@tutanota.com>" \
       license = "MIT" \
