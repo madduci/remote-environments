@@ -1,4 +1,4 @@
-FROM rust:1.64
+FROM rust:1.73
 
 LABEL maintainer = "Michele Adduci <adduci@tutanota.com>" \
     license = "MIT" \

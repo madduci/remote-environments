@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.11
 
 LABEL maintainer = "Michele Adduci <adduci@tutanota.com>" \
       license = "MIT" \

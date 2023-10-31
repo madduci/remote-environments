@@ -1,4 +1,4 @@
-FROM  openjdk:17-jdk-slim-buster
+FROM  openjdk:21-jdk-slim-buster
 
 LABEL maintainer = "Michele Adduci <adduci@tutanota.com>" \
       license = "MIT" \
@@ -12,7 +12,7 @@ ARG USER_GID=$USER_UID
 ENV USERNAME=${USERNAME}
 
 # Define Maven information
-ARG MAVEN_VERSION=3.8.6
+ARG MAVEN_VERSION=3.9.5
 ENV MAVEN_HOME=/usr/local/share/maven
 
 RUN DEBIAN_FRONTEND=noninteractive \
